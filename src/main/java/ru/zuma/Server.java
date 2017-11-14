@@ -17,7 +17,7 @@ public class Server {
 
         ServerSocketChannel channel = ServerSocketChannel.open();
         channel.configureBlocking(false);
-        channel.socket().bind(new InetSocketAddress(addr, port));
+        channel.socket().bind(new InetSocketAddress(port));
         channel.register(selector, OP_ACCEPT);
 
         new Thread( ()->{
