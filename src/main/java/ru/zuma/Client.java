@@ -20,7 +20,7 @@ public class Client {
         SocketChannel channel = SocketChannel.open();
         channel.configureBlocking(false);
         channel.register(selector, OP_CONNECT);
-        channel.connect(new InetSocketAddress(addr, port));
+        channel.connect(new InetSocketAddress(port));
 
         new Thread( ()->{
             Scanner scanner = new Scanner(System.in);
