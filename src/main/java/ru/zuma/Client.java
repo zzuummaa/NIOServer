@@ -11,8 +11,16 @@ import static java.nio.channels.SelectionKey.OP_CONNECT;
 import static java.nio.channels.SelectionKey.OP_WRITE;
 
 public class Client {
-    private String addr = "http://test-testjavamaven.7e14.starter-us-west-2.openshiftapps.com/";
+    private String addr = "10.128.11.221";
     private int port = 8080;
+
+    public Client() {
+    }
+
+    public Client(String addr, int port) {
+        this.addr = addr;
+        this.port = port;
+    }
 
     public void run() throws IOException {
         Selector selector = Selector.open();
@@ -20,7 +28,7 @@ public class Client {
         SocketChannel channel = SocketChannel.open();
         channel.configureBlocking(false);
         channel.register(selector, OP_CONNECT);
-        channel.connect(new InetSocketAddress(port));
+        channel.connect(new InetSocketAddress(addr, port));
 
         new Thread( ()->{
             Scanner scanner = new Scanner(System.in);
@@ -45,6 +53,6 @@ public class Client {
     }
 
     public static void main(String[] args) throws IOException {
-        new Client().run();
+        new Client("40.69.84.9", 8080).run();
     }
 }

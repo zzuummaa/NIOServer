@@ -108,42 +108,4 @@
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <id>openshift</id>
-
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <!--
-                            Git repo is checked out into /var/lib/openshift/52d5741450044610e8000284/app-root/runtime/repo
-                            and Maven is started in this directory.
-                            Deployable artifacts, mainly ROOT.war, must be copiend into
-                            /var/lib/openshift/52d5741450044610e8000284/app-root/runtime/repo/webapps/ROOT.war
-
-                            Because wotan-browser is module in subdirectory and I would expect <outputDirectory>../webapps</outputDirectory> value
-                            but interestingly it is not true and it must be <outputDirectory>webapps</outputDirectory>
-                            -->
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-jar-plugin</artifactId>
-                            <version>3.0.0</version>
-                            <configuration>
-                                <archive>
-                                    <index>true</index>
-                                    <manifest>
-                                        <addClasspath>true</addClasspath>
-                                        <mainClass>ru.zuma.Server</mainClass>
-                                    </manifest>
-                                </archive>
-                            </configuration>
-                        </plugin>
-
-                    </plugins>
-                </pluginManagement>
-            </build>
-
-        </profile>
-    </profiles>
-
 </project>

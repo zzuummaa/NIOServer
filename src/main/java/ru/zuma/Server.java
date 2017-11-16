@@ -9,7 +9,7 @@ import java.util.Scanner;
 import static java.nio.channels.SelectionKey.*;
 
 public class Server {
-    private String addr = "10.128.11.218";
+    private String addr = "0.0.0.0";
     private int port = 8080;
 
     public void run() throws IOException {
